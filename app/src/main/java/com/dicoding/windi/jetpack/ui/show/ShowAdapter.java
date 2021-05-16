@@ -50,21 +50,21 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ShowViewHolder
         return listCourses.size();
     }
 
-    static class ShowViewHolder extends RecyclerView.ViewHolder {
+    class ShowViewHolder extends RecyclerView.ViewHolder {
 
         private final ItemsShowBinding binding;
-        private ShowFragmentCallback showFragmentCallback;
+
 
         ShowViewHolder(ItemsShowBinding binding) {
             super(binding.getRoot());
-
             this.binding = binding;
+
         }
 
         @SuppressLint("StringFormatInvalid")
         void bind(DataEntity data) {
             binding.tvShowTitle.setText(data.getTitle());
-            binding.tvFirstAirDate.setText(itemView.getResources().getString(R.string.release_date, data.getReleaseDate()));
+            binding.tvFirstAirDate.setText(data.getReleaseDate());
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
                 intent.putExtra(DetailActivity.EXTRA_ID, data.getFilmId());

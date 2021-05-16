@@ -37,9 +37,9 @@ public class FilmFragment extends Fragment  implements FilmFragmentCallback{
             //List<CourseEntity> courses = DataDummy.generateDummyCourses();
             FilmAdapter filmAdapter = new FilmAdapter(this);
             filmAdapter.setMovies(movies);
-            fragmentFilmBinding.rvAcademy.setLayoutManager(new LinearLayoutManager(getContext()));
-            fragmentFilmBinding.rvAcademy.setHasFixedSize(true);
-            fragmentFilmBinding.rvAcademy.setAdapter(filmAdapter);
+            fragmentFilmBinding.rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
+            fragmentFilmBinding.rvMovies.setHasFixedSize(true);
+            fragmentFilmBinding.rvMovies.setAdapter(filmAdapter);
         }
     }
 
@@ -51,7 +51,7 @@ public class FilmFragment extends Fragment  implements FilmFragmentCallback{
                     .from(getActivity())
                     .setType(mimeType)
                     .setChooserTitle("Bagikan tentang film ini sekarang.")
-                    .setText(String.format("Segera daftar kelas %s di dicoding.com", data.getTitle()))
+                    .setText(String.format("Saksikan Movies %s di platform kesayangan anda", data.getTitle()))
                     .startChooser();
         }
     }

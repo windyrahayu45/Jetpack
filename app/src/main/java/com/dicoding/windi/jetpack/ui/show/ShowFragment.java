@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -44,14 +45,22 @@ public class ShowFragment extends Fragment implements  ShowFragmentCallback{
             //List<CourseEntity> courses = DataDummy.generateDummyCourses();
             ShowAdapter showAdapter = new ShowAdapter(this);
             showAdapter.setShow(movies);
-            fragmentShowBinding.rvAcademy.setLayoutManager(new LinearLayoutManager(getContext()));
-            fragmentShowBinding.rvAcademy.setHasFixedSize(true);
-            fragmentShowBinding.rvAcademy.setAdapter(showAdapter);
+            fragmentShowBinding.rvShow.setLayoutManager(new LinearLayoutManager(getContext()));
+            fragmentShowBinding.rvShow.setHasFixedSize(true);
+            fragmentShowBinding.rvShow.setAdapter(showAdapter);
         }
     }
 
     @Override
-    public void onShareClick(DataEntity dataEntity) {
-
+    public void onShareClick(DataEntity data) {
+        if (getActivity() != null) {
+            String mimeType = "text/plain";
+            ShareCompat.IntentBuilder
+                    .from(getActivity())
+                    .setType(mimeType)
+                    .setChooserTitle("Bagikan tentang film ini sekarang.")
+                    .setText(String.format("Saksikan TV Show %s di platform kesayangan anda", data.getTitle()))
+                    .startChooser();
+        }
     }
 }
