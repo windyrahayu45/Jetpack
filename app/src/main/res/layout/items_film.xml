@@ -46,7 +46,7 @@
             tools:text="@string/title" />
 
         <TextView
-            android:id="@+id/tv_item_date"
+            android:id="@+id/tv_release_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -55,6 +55,17 @@
             app:layout_constraintStart_toStartOf="@+id/tv_item_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_title"
             tools:text="@string/tahun" />
+
+        <ImageButton
+            android:id="@+id/img_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_share_blue"
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
