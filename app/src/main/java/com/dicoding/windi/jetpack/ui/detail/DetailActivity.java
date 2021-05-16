@@ -54,34 +54,13 @@ public class DetailActivity extends AppCompatActivity {
             String jenisId = extras.getString(JENIS_ID);
             if (courseId != null) {
                 viewModel.setSelected(courseId,jenisId);
-
-              // populateCourse(viewModel.getData());
-
-
-                if(jenisId.equals("1")){
-                    dataEntities = DataDummy.generateDummyMovie();
-                }
-                else{
-                    dataEntities = DataDummy.generateDummyShow();
-                }
-                for (int i = 0; i < dataEntities.size(); i++) {
-                    DataEntity courseEntity = dataEntities.get(i);
-                    if (courseEntity.getFilmId().equals(courseId)) {
-                        populateCourse(courseEntity);
-
-
-                    }
-                }
-
-
-
-
+                populateData(viewModel.getData());
             }
         }
 
     }
 
-    private void populateCourse(DataEntity courseEntity) {
+    private void populateData(DataEntity courseEntity) {
         detailContentBinding.textTitle.setText(courseEntity.getTitle());
         detailContentBinding.textDescription.setText(courseEntity.getDescription());
         detailContentBinding.textDate.setText(courseEntity.getReleaseDate());
@@ -93,7 +72,7 @@ public class DetailActivity extends AppCompatActivity {
                         .error(R.drawable.ic_error))
                 .into(detailContentBinding.imagePoster);
 
-                Log.e("hasil", String.valueOf(courseEntity.getDescription()));
+
 
 
     }

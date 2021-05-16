@@ -1,5 +1,7 @@
 package com.dicoding.windi.jetpack.ui.detail;
 
+import android.util.Log;
+
 import androidx.lifecycle.ViewModel;
 
 
@@ -11,24 +13,26 @@ import java.util.List;
 public class DetailViewModel extends ViewModel {
     private String pilihanId;
     private String jenisId;
-    List<DataEntity> dataEntities;
+    List<DataEntity> dataEntities  ;
 
-    public void setSelected(String courseId,String jenisId) {
+    public void setSelected(String pilihanId,String jenisId) {
         this.pilihanId = pilihanId;
         this.jenisId = jenisId;
     }
 
     public DataEntity getData() {
         DataEntity data = null;
+
         if(jenisId.equals("1")){
             dataEntities = DataDummy.generateDummyMovie();
         }
         else{
             dataEntities = DataDummy.generateDummyShow();
         }
-
         for (DataEntity dataEntity : dataEntities) {
+
             if (dataEntity.getFilmId().equals(pilihanId)) {
+
                 data = dataEntity;
             }
         }
