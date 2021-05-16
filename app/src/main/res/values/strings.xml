@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Jetpack</string>
+    <string name="app_name">Popular Show</string>
     <string name="film">Film</string>
     <string name="show">TV Show</string>
     <string name="title" tools:ignore="ExtraTranslation">Judul</string>
