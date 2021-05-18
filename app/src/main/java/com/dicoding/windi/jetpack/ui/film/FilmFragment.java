@@ -23,7 +23,7 @@ public class FilmFragment extends Fragment  implements FilmFragmentCallback{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
+
         fragmentFilmBinding = FragmentFilmBinding.inflate(inflater, container, false);
         return fragmentFilmBinding.getRoot();
     }
@@ -34,7 +34,7 @@ public class FilmFragment extends Fragment  implements FilmFragmentCallback{
         if (getActivity() != null) {
             FilmViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(FilmViewModel.class);
             List<DataEntity> movies = viewModel.getMovie();
-            //List<CourseEntity> courses = DataDummy.generateDummyCourses();
+
             FilmAdapter filmAdapter = new FilmAdapter(this);
             filmAdapter.setMovies(movies);
             fragmentFilmBinding.rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -12,7 +12,6 @@ import com.dicoding.windi.jetpack.R;
 import com.dicoding.windi.jetpack.data.DataEntity;
 import com.dicoding.windi.jetpack.databinding.ItemsShowBinding;
 import com.dicoding.windi.jetpack.ui.detail.DetailActivity;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

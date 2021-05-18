@@ -24,7 +24,6 @@ public class ShowFragment extends Fragment implements  ShowFragmentCallback{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
         fragmentShowBinding = FragmentShowBinding.inflate(inflater, container, false);
         return fragmentShowBinding.getRoot();
     }
@@ -35,7 +34,6 @@ public class ShowFragment extends Fragment implements  ShowFragmentCallback{
         if (getActivity() != null) {
             ShowViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ShowViewModel.class);
             List<DataEntity> movies = viewModel.getShow();
-            //List<CourseEntity> courses = DataDummy.generateDummyCourses();
             ShowAdapter showAdapter = new ShowAdapter(this);
             showAdapter.setShow(movies);
             fragmentShowBinding.rvShow.setLayoutManager(new LinearLayoutManager(getContext()));
