@@ -1,13 +1,9 @@
 package com.dicoding.windi.jetpack.ui.detail;
 
-import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
-
-
 import com.dicoding.windi.jetpack.data.DataEntity;
 import com.dicoding.windi.jetpack.utils.DataDummy;
-
 import java.util.List;
 
 public class DetailViewModel extends ViewModel {

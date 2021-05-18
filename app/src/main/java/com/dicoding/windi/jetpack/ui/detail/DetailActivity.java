@@ -1,7 +1,9 @@
 package com.dicoding.windi.jetpack.ui.detail;
 
-import android.content.Intent;
+
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -9,27 +11,24 @@ import com.bumptech.glide.request.RequestOptions;
 import com.dicoding.windi.jetpack.data.DataEntity;
 import com.dicoding.windi.jetpack.databinding.ActivityDetailBinding;
 import com.dicoding.windi.jetpack.databinding.ContentDetailBinding;
-import com.dicoding.windi.jetpack.utils.DataDummy;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.util.Log;
-import android.view.View;
-
 import com.dicoding.windi.jetpack.R;
 
-import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_ID = "extra_id";
     public static final String JENIS_ID = "jenis_id";
     private ContentDetailBinding detailContentBinding;
-    List<DataEntity> dataEntities;
+    String jenisId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,6 @@ public class DetailActivity extends AppCompatActivity {
         ActivityDetailBinding activityDetailCourseBinding = ActivityDetailBinding.inflate(getLayoutInflater());
         detailContentBinding = activityDetailCourseBinding.detailContent;
         setContentView(activityDetailCourseBinding.getRoot());
-
         setSupportActionBar(activityDetailCourseBinding.toolbar);
 
         if (getSupportActionBar() != null) {
@@ -51,7 +49,7 @@ public class DetailActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String courseId = extras.getString(EXTRA_ID);
-            String jenisId = extras.getString(JENIS_ID);
+            jenisId = extras.getString(JENIS_ID);
             if (courseId != null) {
                 viewModel.setSelected(courseId,jenisId);
                 populateData(viewModel.getData());
@@ -60,20 +58,43 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
-    private void populateData(DataEntity courseEntity) {
-        detailContentBinding.textTitle.setText(courseEntity.getTitle());
-        detailContentBinding.textDescription.setText(courseEntity.getDescription());
-        detailContentBinding.textDate.setText(courseEntity.getReleaseDate());
+    private void populateData(DataEntity dataEntity) {
+
+
+
+        detailContentBinding.textTitle.setText(dataEntity.getTitle());
+        detailContentBinding.textDescription.setText(dataEntity.getDescription());
+        detailContentBinding.textDate.setText(parseDateToddMMyyyy(dataEntity.getReleaseDate()));
+        detailContentBinding.textVote.setText(dataEntity.getVote());
+
+        if(jenisId.equals("1")){
+            detailContentBinding.textRelease.setText(R.string.release_date);
+        }
+        else{
+            detailContentBinding.textRelease.setText(R.string.first_air_date);
+        }
 
         Glide.with(this)
-                .load(courseEntity.getPosterPath())
+                .load(dataEntity.getPosterPath())
                 .transform(new RoundedCorners(20))
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
                         .error(R.drawable.ic_error))
                 .into(detailContentBinding.imagePoster);
 
+    }
 
+    public String parseDateToddMMyyyy(String strCurrentDate) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date newDate = null;
+        try {
+            newDate = format.parse(strCurrentDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
+        format = new SimpleDateFormat("MMM dd, yyyy");
+        String date = format.format(newDate);
 
+        return date;
     }
 }

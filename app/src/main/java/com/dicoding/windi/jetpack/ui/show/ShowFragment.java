@@ -8,18 +8,11 @@ import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.dicoding.windi.jetpack.R;
 import com.dicoding.windi.jetpack.data.DataEntity;
-import com.dicoding.windi.jetpack.databinding.FragmentFilmBinding;
 import com.dicoding.windi.jetpack.databinding.FragmentShowBinding;
-import com.dicoding.windi.jetpack.ui.film.FilmAdapter;
-import com.dicoding.windi.jetpack.ui.film.FilmViewModel;
-
 import java.util.List;
 
 

@@ -115,7 +115,7 @@ public class DataDummy {
                 "The Bad Batch",
                 "2021-05-04",
                 "Follow the elite and experimental Clones of the Bad Batch as they find their way in a rapidly changing galaxy in the aftermath of the Clone Wars.",
-                "9",
+                "9.0",
                 "https://image.tmdb.org/t/p/original/WjQmEWFrOf98nT5aEfUfVYz9N2.jpg"));
         show.add(new DataEntity("1416",
                 "Grey's Anatomy",

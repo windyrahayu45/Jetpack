@@ -4,6 +4,5 @@ import com.dicoding.windi.jetpack.data.DataEntity;
 
 public interface ShowFragmentCallback {
 
-
     void onShareClick(DataEntity dataEntity);
 }

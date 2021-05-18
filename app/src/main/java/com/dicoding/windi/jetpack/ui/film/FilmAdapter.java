@@ -1,6 +1,6 @@
 package com.dicoding.windi.jetpack.ui.film;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -12,7 +12,11 @@ import com.dicoding.windi.jetpack.R;
 import com.dicoding.windi.jetpack.data.DataEntity;
 import com.dicoding.windi.jetpack.databinding.ItemsFilmBinding;
 import com.dicoding.windi.jetpack.ui.detail.DetailActivity;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.MoviesViewHolder>{
@@ -52,8 +56,19 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.MoviesViewHold
         }
 
         void bind(DataEntity data) {
+
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date newDate = null;
+            try {
+                newDate = format.parse(data.getReleaseDate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            format = new SimpleDateFormat("MMM dd, yyyy");
+            String date = format.format(newDate);
             binding.tvItemTitle.setText(data.getTitle());
-            binding.tvReleaseDate.setText(data.getReleaseDate());
+            binding.tvReleaseDate.setText(date);
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
                 intent.putExtra(DetailActivity.EXTRA_ID, data.getFilmId());

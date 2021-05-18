@@ -15,7 +15,8 @@
         <activity
             android:name=".ui.detail.DetailActivity"
             android:label="@string/title_activity_detail"
-            android:theme="@style/Theme.Jetpack.NoActionBar">
+            android:theme="@style/Theme.Jetpack.NoActionBar"
+            android:parentActivityName=".ui.home.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ui.home.HomeActivity" />
